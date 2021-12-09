@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/redesigned-garbanzo/static/css/main.06b01be5.chunk.css",
+    "main.js": "/redesigned-garbanzo/static/js/main.1f680f20.chunk.js",
+    "main.js.map": "/redesigned-garbanzo/static/js/main.1f680f20.chunk.js.map",
+    "runtime-main.js": "/redesigned-garbanzo/static/js/runtime-main.94f8249d.js",
+    "runtime-main.js.map": "/redesigned-garbanzo/static/js/runtime-main.94f8249d.js.map",
+    "static/js/2.ebb9bbfa.chunk.js": "/redesigned-garbanzo/static/js/2.ebb9bbfa.chunk.js",
+    "static/js/2.ebb9bbfa.chunk.js.map": "/redesigned-garbanzo/static/js/2.ebb9bbfa.chunk.js.map",
+    "static/js/3.168c215e.chunk.js": "/redesigned-garbanzo/static/js/3.168c215e.chunk.js",
+    "static/js/3.168c215e.chunk.js.map": "/redesigned-garbanzo/static/js/3.168c215e.chunk.js.map",
+    "index.html": "/redesigned-garbanzo/index.html",
+    "static/css/main.06b01be5.chunk.css.map": "/redesigned-garbanzo/static/css/main.06b01be5.chunk.css.map",
+    "static/js/2.ebb9bbfa.chunk.js.LICENSE.txt": "/redesigned-garbanzo/static/js/2.ebb9bbfa.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/redesigned-garbanzo/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.94f8249d.js",
+    "static/js/2.ebb9bbfa.chunk.js",
+    "static/css/main.06b01be5.chunk.css",
+    "static/js/main.1f680f20.chunk.js"
+  ]
+}
