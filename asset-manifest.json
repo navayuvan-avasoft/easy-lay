@@ -1,22 +1,15 @@
 {
   "files": {
-    "main.css": "/easy-lay/static/css/main.1c8ab6c9.chunk.css",
-    "main.js": "/easy-lay/static/js/main.da877329.chunk.js",
-    "main.js.map": "/easy-lay/static/js/main.da877329.chunk.js.map",
-    "runtime-main.js": "/easy-lay/static/js/runtime-main.5e099e44.js",
-    "runtime-main.js.map": "/easy-lay/static/js/runtime-main.5e099e44.js.map",
-    "static/js/2.42fcc5ca.chunk.js": "/easy-lay/static/js/2.42fcc5ca.chunk.js",
-    "static/js/2.42fcc5ca.chunk.js.map": "/easy-lay/static/js/2.42fcc5ca.chunk.js.map",
-    "static/js/3.69daa3ce.chunk.js": "/easy-lay/static/js/3.69daa3ce.chunk.js",
-    "static/js/3.69daa3ce.chunk.js.map": "/easy-lay/static/js/3.69daa3ce.chunk.js.map",
+    "main.css": "/easy-lay/static/css/main.c052c869.css",
+    "main.js": "/easy-lay/static/js/main.3f96a074.js",
+    "static/js/787.0f2fa536.chunk.js": "/easy-lay/static/js/787.0f2fa536.chunk.js",
     "index.html": "/easy-lay/index.html",
-    "static/css/main.1c8ab6c9.chunk.css.map": "/easy-lay/static/css/main.1c8ab6c9.chunk.css.map",
-    "static/js/2.42fcc5ca.chunk.js.LICENSE.txt": "/easy-lay/static/js/2.42fcc5ca.chunk.js.LICENSE.txt"
+    "main.c052c869.css.map": "/easy-lay/static/css/main.c052c869.css.map",
+    "main.3f96a074.js.map": "/easy-lay/static/js/main.3f96a074.js.map",
+    "787.0f2fa536.chunk.js.map": "/easy-lay/static/js/787.0f2fa536.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.5e099e44.js",
-    "static/js/2.42fcc5ca.chunk.js",
-    "static/css/main.1c8ab6c9.chunk.css",
-    "static/js/main.da877329.chunk.js"
+    "static/css/main.c052c869.css",
+    "static/js/main.3f96a074.js"
   ]
 }
