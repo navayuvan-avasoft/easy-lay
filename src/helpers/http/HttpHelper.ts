@@ -10,7 +10,7 @@ import AccessToken, { AccessTokenResponse } from '../../models/utils/AccessToken
 class HttpClient<R, B> {
   client: AxiosInstance;
 
-  constructor(token: string, config?: {}) {
+  constructor(token: string, config?: Record<string, unknown>) {
     let header = {
       Authorization: `Bearer ${token}`,
       API_SERVICE_KEY: String(process.env.REACT_APP_DEV_API_SERVICE_KEY),
@@ -30,7 +30,7 @@ class HttpClient<R, B> {
     });
   }
 
-  public static async Create<R, B>(config?: {}): Promise<HttpClient<R, B>> {
+  public static async Create<R, B>(config?: Record<string, unknown>): Promise<HttpClient<R, B>> {
     const token = await HttpClient.getAccessToken();
     return new HttpClient<R, B>(token, config);
   }
