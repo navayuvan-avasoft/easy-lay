@@ -7,7 +7,7 @@ const App: FC = () => (
   <Router>
     <Routes>
       <Route path="/home" element={<HomePage />} />
-      <Route path="/insertPage" element={<InsertPage />} />
+      <Route path="/insert-store" element={<InsertPage />} />
     </Routes>
   </Router>
 );
