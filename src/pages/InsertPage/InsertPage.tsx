@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { FC } from 'react';
 import { Container, Stack, Typography, TextField, Grid, Button } from '@mui/material';
 import './InsertPage.scss';
@@ -9,7 +8,7 @@ const InsertPage: FC = () => (
       <Typography variant="h4" marginBottom={3} component="h3" align="center">
         Add New Store
       </Typography>
-      <form >
+      <form>
         <Grid container className="subdiv" rowSpacing={3} columnSpacing={2}>
           <Grid container justifyContent="flex-end" alignItems="center" item sm={6}>
             <label htmlFor="image-file" className="flex-item-left">
@@ -248,7 +247,7 @@ const InsertPage: FC = () => (
           </Grid>
           <Grid item container alignContent="center" justifyContent="center" sm={12}>
             <Button
-              type='submit'
+              type="submit"
               id="InsertStoreButton"
               className="ButtonStyle"
               variant="contained"
