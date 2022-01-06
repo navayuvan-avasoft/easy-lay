@@ -9,7 +9,7 @@ const InsertPage: FC = () => (
       <Typography variant="h4" marginBottom={3} component="h3" align="center">
         Add New Store
       </Typography>
-      <form>
+      <form >
         <Grid container className="subdiv" rowSpacing={3} columnSpacing={2}>
           <Grid container justifyContent="flex-end" alignItems="center" item sm={6}>
             <label htmlFor="image-file" className="flex-item-left">
@@ -18,19 +18,11 @@ const InsertPage: FC = () => (
           </Grid>
 
           <Grid item sm={6}>
-            <TextField
-              id="image-file"
-              type="file"
-              name="image-file"
-              required
-              size="small"
-            />
+            <TextField id="image-file" type="file" name="image-file" required size="small" />
           </Grid>
 
           <Grid container justifyContent="flex-end" alignItems="center" item sm={6}>
-            <label htmlFor="ShopName">
-              Shop Name
-            </label>
+            <label htmlFor="ShopName">Shop Name</label>
           </Grid>
           <Grid item sm={6}>
             <TextField
@@ -45,9 +37,7 @@ const InsertPage: FC = () => (
           </Grid>
 
           <Grid container justifyContent="flex-end" alignItems="center" item sm={6}>
-            <label htmlFor="DBFriendlyName">
-              DB Friendly Name 
-            </label>
+            <label htmlFor="DBFriendlyName">DB Friendly Name</label>
           </Grid>
           <Grid item sm={6}>
             <TextField
@@ -62,9 +52,7 @@ const InsertPage: FC = () => (
           </Grid>
 
           <Grid container justifyContent="flex-end" alignItems="center" item sm={6}>
-            <label htmlFor="ShopDBA">
-              Shop DBA 
-            </label>
+            <label htmlFor="ShopDBA">Shop DBA</label>
           </Grid>
           <Grid item sm={6}>
             <TextField
@@ -79,9 +67,7 @@ const InsertPage: FC = () => (
           </Grid>
 
           <Grid container justifyContent="flex-end" alignItems="center" item sm={6}>
-            <label htmlFor="Loc_guid" >
-              Location Guid 
-            </label>
+            <label htmlFor="Loc_guid">Location Guid</label>
           </Grid>
           <Grid item sm={6}>
             <TextField
@@ -96,9 +82,7 @@ const InsertPage: FC = () => (
           </Grid>
 
           <Grid container justifyContent="flex-end" alignItems="center" item sm={6}>
-            <label htmlFor="WebUrl" >
-              Retailers Web URL 
-            </label>
+            <label htmlFor="WebUrl">Retailers Web URL</label>
           </Grid>
           <Grid item sm={6}>
             <TextField
@@ -113,9 +97,7 @@ const InsertPage: FC = () => (
           </Grid>
 
           <Grid container justifyContent="flex-end" alignItems="center" item sm={6}>
-            <label htmlFor="SovernUrl" >
-              Retailers Sovern URL 
-            </label>
+            <label htmlFor="SovernUrl">Retailers Sovern URL</label>
           </Grid>
           <Grid item sm={6}>
             <TextField
@@ -130,9 +112,7 @@ const InsertPage: FC = () => (
           </Grid>
 
           <Grid container justifyContent="flex-end" alignItems="center" item sm={6}>
-            <label htmlFor="Merchantid" >
-              Retailers Merchant Guid 
-            </label>
+            <label htmlFor="Merchantid">Retailers Merchant Guid</label>
           </Grid>
           <Grid item sm={6}>
             <TextField
@@ -146,11 +126,8 @@ const InsertPage: FC = () => (
             />
           </Grid>
 
-
           <Grid container justifyContent="flex-end" alignItems="center" item sm={6}>
-            <label htmlFor="pdpcommonurl">
-              PDP Page CommonURL 
-            </label>
+            <label htmlFor="pdpcommonurl">PDP Page CommonURL</label>
           </Grid>
           <Grid item sm={6}>
             <TextField
@@ -165,9 +142,7 @@ const InsertPage: FC = () => (
           </Grid>
 
           <Grid item sm={6} container justifyContent="flex-end" alignItems="center">
-            <label htmlFor="pdpbuttoncode">
-              PDP Page ButtonCode 
-            </label>
+            <label htmlFor="pdpbuttoncode">PDP Page ButtonCode</label>
           </Grid>
           <Grid item sm={6}>
             <TextField
@@ -182,11 +157,8 @@ const InsertPage: FC = () => (
             />
           </Grid>
 
-
           <Grid container justifyContent="flex-end" alignItems="center" item sm={6}>
-            <label htmlFor="cartcommonurl">
-              Cart Page CommonURL 
-            </label>
+            <label htmlFor="cartcommonurl">Cart Page CommonURL</label>
           </Grid>
           <Grid item sm={6}>
             <TextField
@@ -201,9 +173,7 @@ const InsertPage: FC = () => (
           </Grid>
 
           <Grid container justifyContent="flex-end" alignItems="center" item sm={6}>
-            <label htmlFor="cartbuttoncode">
-              Cart Page ButtonCode 
-            </label>
+            <label htmlFor="cartbuttoncode">Cart Page ButtonCode</label>
           </Grid>
           <Grid item sm={6}>
             <TextField
@@ -219,9 +189,7 @@ const InsertPage: FC = () => (
           </Grid>
 
           <Grid container justifyContent="flex-end" alignItems="center" item sm={6}>
-            <label htmlFor="checkoutcommonurl">
-              Checkout Page CommonURL 
-            </label>
+            <label htmlFor="checkoutcommonurl">Checkout Page CommonURL</label>
           </Grid>
           <Grid item sm={6}>
             <TextField
@@ -236,9 +204,7 @@ const InsertPage: FC = () => (
           </Grid>
 
           <Grid container justifyContent="flex-end" alignItems="center" item sm={6}>
-            <label htmlFor="checkoutbuttoncode">
-              Checkout Page ButtonCode 
-            </label>
+            <label htmlFor="checkoutbuttoncode">Checkout Page ButtonCode</label>
           </Grid>
           <Grid item sm={6}>
             <TextField
@@ -254,66 +220,35 @@ const InsertPage: FC = () => (
           </Grid>
 
           <Grid container justifyContent="flex-end" alignItems="center" item sm={6}>
-            <label htmlFor="PdpFile">
-              Upload PDPpage JS File 
-            </label>
+            <label htmlFor="PdpFile">Upload PDPpage JS File</label>
           </Grid>
           <Grid item sm={6}>
-            <TextField
-              id="PdpFile"
-              type="file"
-              name="PdpFile"
-              required
-              size="small"
-            />
+            <TextField id="PdpFile" type="file" name="PdpFile" required size="small" />
           </Grid>
 
           <Grid container justifyContent="flex-end" alignItems="center" item sm={6}>
-            <label htmlFor="cartFile">
-              Upload Cartpage JS File 
-            </label>
+            <label htmlFor="cartFile">Upload Cartpage JS File</label>
           </Grid>
           <Grid item sm={6}>
-            <TextField
-              id="cartFile"
-              type="file"
-              name="cartFile"
-              required
-              size="small"
-            />
+            <TextField id="cartFile" type="file" name="cartFile" required size="small" />
           </Grid>
 
           <Grid container justifyContent="flex-end" alignItems="center" item sm={6}>
-            <label htmlFor="checkoutFile">
-              Upload Checkoutpage JS File 
-            </label>
+            <label htmlFor="checkoutFile">Upload Checkoutpage JS File</label>
           </Grid>
           <Grid item sm={6}>
-            <TextField
-              id="checkoutFile"
-              type="file"
-              name="checkoutFile"
-              required
-              size="small"
-            />
+            <TextField id="checkoutFile" type="file" name="checkoutFile" required size="small" />
           </Grid>
 
           <Grid container justifyContent="flex-end" alignItems="center" item sm={6}>
-            <label htmlFor="initialFile" >
-              Upload Cartpage JS File 
-            </label>
+            <label htmlFor="initialFile">Upload Cartpage JS File</label>
           </Grid>
           <Grid item sm={6}>
-            <TextField
-              id="initialFile"
-              type="file"
-              name="initialFile"
-              required
-              size="small"
-            />
+            <TextField id="initialFile" type="file" name="initialFile" required size="small" />
           </Grid>
           <Grid item container alignContent="center" justifyContent="center" sm={12}>
             <Button
+              type='submit'
               id="InsertStoreButton"
               className="ButtonStyle"
               variant="contained"
