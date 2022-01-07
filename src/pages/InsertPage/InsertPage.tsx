@@ -1,5 +1,6 @@
-import React, { ChangeEventHandler, FC, useState } from 'react';
+import React, { ChangeEvent, FC, useState } from 'react';
 import { Container, Stack, Typography, TextField, Grid, Button } from '@mui/material';
+import JSFileType from '../../models/stores/JSFileType';
 import './InsertPage.scss';
 
 const InsertPage: FC = () => {
@@ -9,24 +10,27 @@ const InsertPage: FC = () => {
   const [checkoutPageJSFile, setcheckoutPageJSFile] = useState<File>();
   const [initialJSFile, setinitialJSFile] = useState<File>();
 
-  const JSFileHandle = (e: ChangeEventHandler<HTMLFormElement>, JsPageType: string) => {
-    switch (JsPageType) {
-      case 'PdpFile':
-        setpdpPageJSFile(e.target.file);
+  const JSFileHandle = (e: ChangeEvent<HTMLInputElement>, fileType: JSFileType): void => {
+    switch (fileType) {
+      case JSFileType.PdpFile:
+        setpdpPageJSFile((e.target as HTMLInputElement).files?.item(0) as File);
         break;
-      case 'CartFile':
-        setcartPageJSFile(e.target.file);
+      case JSFileType.CartFile:
+        setcartPageJSFile((e.target as HTMLInputElement).files?.item(0) as File);
         break;
-      case 'CheckoutFile':
-        setcheckoutPageJSFile(e.target.file);
+      case JSFileType.CheckoutFile:
+        setcheckoutPageJSFile((e.target as HTMLInputElement).files?.item(0) as File);
+        break;
+      case JSFileType.InitialJSFile:
+        setinitialJSFile((e.target as HTMLInputElement).files?.item(0) as File);
         break;
       default:
         break;
     }
   };
 
-  const handleStoreLogo (event: object) => {
-    setshopLogoImageFile(event.target.files[0]);
+  const handleStoreLogo = (event: ChangeEvent<HTMLInputElement>): void => {
+    setshopLogoImageFile((event.target as HTMLInputElement).files?.item(0) as File);
   };
 
   return (
@@ -50,7 +54,7 @@ const InsertPage: FC = () => {
                 type="file"
                 name="image-file"
                 required
-                onChange={() => {this.handleStoreLogo}}
+                onChange={handleStoreLogo}
                 size="small"
               />
             </Grid>
@@ -262,6 +266,9 @@ const InsertPage: FC = () => {
                 type="file"
                 name="PdpFile"
                 value={pdpPageJSFile}
+                onChange={(e: ChangeEvent<HTMLInputElement>): void =>
+                  JSFileHandle(e, JSFileType.PdpFile)
+                }
                 required
                 size="small"
               />
@@ -276,6 +283,9 @@ const InsertPage: FC = () => {
                 type="file"
                 name="cartFile"
                 value={cartPageJSFile}
+                onChange={(e: ChangeEvent<HTMLInputElement>): void =>
+                  JSFileHandle(e, JSFileType.CartFile)
+                }
                 required
                 size="small"
               />
@@ -289,6 +299,9 @@ const InsertPage: FC = () => {
                 id="checkoutFile"
                 type="file"
                 value={checkoutPageJSFile}
+                onChange={(e: ChangeEvent<HTMLInputElement>): void =>
+                  JSFileHandle(e, JSFileType.CheckoutFile)
+                }
                 name="checkoutFile"
                 required
                 size="small"
@@ -304,6 +317,9 @@ const InsertPage: FC = () => {
                 type="file"
                 name="initialFile"
                 value={initialJSFile}
+                onChange={(e: ChangeEvent<HTMLInputElement>): void =>
+                  JSFileHandle(e, JSFileType.InitialJSFile)
+                }
                 required
                 size="small"
               />
