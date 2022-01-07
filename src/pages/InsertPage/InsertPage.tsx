@@ -40,11 +40,9 @@ const InsertPage: FC = () => {
           Add New Store
         </Typography>
         <form>
-          <Grid container className="subdiv" rowSpacing={3} columnSpacing={2}>
+          <Grid container rowSpacing={3} columnSpacing={2}>
             <Grid container justifyContent="flex-end" alignItems="center" item sm={6}>
-              <label htmlFor="image-file" className="flex-item-left">
-                Upload Retailer Logo
-              </label>
+              <label htmlFor="image-file">Upload Retailer Logo</label>
             </Grid>
 
             <Grid item sm={6}>
@@ -325,13 +323,7 @@ const InsertPage: FC = () => {
               />
             </Grid>
             <Grid item container alignContent="center" justifyContent="center" sm={12}>
-              <Button
-                type="submit"
-                id="InsertStoreButton"
-                className="ButtonStyle"
-                variant="contained"
-                value="Insert Store"
-              >
+              <Button type="submit" id="InsertStoreButton" variant="contained" value="Insert Store">
                 Insert Store
               </Button>
             </Grid>
