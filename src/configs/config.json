@@ -8,6 +8,6 @@
   },
   "ROUTES": {
     "ACCESS_TOKEN": "/api/auth/getToken",
-    "GET_ALL_RETAILERS": "/api/store/getAllOnlineStores"
+    "GET_ALL_RETAILERS": "/api/shopOnline/OnlineRetailerDetail/$ShopID"
   }
 }
