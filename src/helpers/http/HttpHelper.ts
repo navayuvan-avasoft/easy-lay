@@ -9,7 +9,6 @@ import AccessToken, { AccessTokenResponse } from '../../models/utils/AccessToken
 // This class acts as a wrapper for axios http client
 class HttpClient<R, B> {
   client: AxiosInstance;
-
   constructor(token: string, config?: Record<string, unknown>) {
     let header = {
       Authorization: `Bearer ${token}`,
