@@ -5,10 +5,6 @@
 }
 .RightBtn {
   margin-left: 10px !important;
-  padding: 4% !important;
-}
-.RightBtns {
-  width: 37%;
 }
 .TableHeader {
   background-color: rgb(202, 202, 202);
@@ -16,6 +12,13 @@
 .TableHeaderContent {
   text-align: center;
 }
+#demo-simple-select {
+  padding-top: 7px !important;
+  padding-bottom: 7px !important;
+}
 .dropDownWidth {
-  width: 38% !important;
+  width: 100px;
+}
+#demo-simple-select-label {
+  top: -8px !important;
 }

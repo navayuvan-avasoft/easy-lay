@@ -74,7 +74,7 @@ const DashBoard: FC = () => {
         <h1 className="heading">DashBoard</h1>
         {/* DropDown to select the config */}
         <div className="RightBtns">
-          <FormControl fullWidth className="dropDownWidth">
+          <FormControl className="dropDownWidth">
             <InputLabel id="demo-simple-select-label">Config</InputLabel>
             <Select labelId="demo-simple-select-label" id="demo-simple-select" label="Age">
               <MenuItem value={10}>Dev</MenuItem>
