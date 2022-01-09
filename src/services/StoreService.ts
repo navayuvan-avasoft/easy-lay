@@ -5,11 +5,10 @@ import HttpResult from '../helpers/http/HttpResult';
 import HttpStatus from '../models/utils/HttpResult';
 
 class StoreService {
-  static getAllStores = async (shopID: number): Promise<HttpResult<OnlineRetailer>> => {
+  static getAllStores = async (): Promise<HttpResult<OnlineRetailer[]>> => {
     try {
-      const httpClient = await HttpClient.Create<OnlineRetailer, null>();
-      const finalurl = Config.ROUTES.GET_ALL_RETAILERS.replace('$ShopID', shopID.toString());
-      const response = await httpClient.get(finalurl);
+      const httpClient = await HttpClient.Create<OnlineRetailer[], null>();
+      const response = await httpClient.get(Config.ROUTES.GET_ALL_RETAILERS);
       return response;
     } catch (error) {
       return {
