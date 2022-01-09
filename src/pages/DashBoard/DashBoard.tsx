@@ -1,6 +1,11 @@
 /* eslint-disable no-console */
 import React, { FC, useState } from 'react';
 import { Container } from '@mui/material';
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 import Table from '@mui/material/Table';
 import Chip from '@mui/material/Chip';
 import Button from '@mui/material/Button';
@@ -10,7 +15,6 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 // import HttpResult from '../../helpers/http/HttpResult';
 import OnlineRetailer from '../../models/stores/OnlineRetailer';
@@ -63,18 +67,33 @@ const DashBoard: FC = () => {
   };
 
   return (
+    /* Parent Container */
     <Container>
       <div className="parentheader">
+        {/* Header Contents */}
         <h1 className="heading">DashBoard</h1>
+        {/* DropDown to select the config */}
         <div className="RightBtns">
+          <FormControl fullWidth className="dropDownWidth">
+            <InputLabel id="demo-simple-select-label">Config</InputLabel>
+            <Select labelId="demo-simple-select-label" id="demo-simple-select" label="Age">
+              <MenuItem value={10}>Dev</MenuItem>
+              <MenuItem value={20}>QA</MenuItem>
+              <MenuItem value={30}>UAT</MenuItem>
+              <MenuItem value={30}>Prod</MenuItem>
+            </Select>
+          </FormControl>
+          {/* Button to navigate to Add Stores Page */}
           <Button variant="contained" className="RightBtn">
             Add Store
           </Button>
+          {/* Button to Logout */}
           <Button variant="contained" className="RightBtn">
             Logout
           </Button>
         </div>
       </div>
+      {/* Search Box */}
       <Box
         component="form"
         sx={{
@@ -90,8 +109,11 @@ const DashBoard: FC = () => {
           onChange={HandleOnChange}
         />
       </Box>
+
+      {/* Display All Retailers in a table Format */}
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="caption table">
+          {/* Table Header */}
           <TableHead className="TableHeader">
             <TableRow>
               <TableCell className="TableHeaderContent">Shop Name</TableCell>
@@ -103,12 +125,22 @@ const DashBoard: FC = () => {
               </TableCell>
             </TableRow>
           </TableHead>
+
+          {/* Table Body 
+              Each Row in a table is a clickable row. So that the data of the clicked
+              row can be passed to the next page
+          */}
           <TableBody role="button" tabIndex={0}>
+            {/* Iterating throught each element in the response object */}
             {rows.map((row: OnlineRetailer) => (
               <TableRow key={row.shopName}>
+                {/* Display the shop name of the retailer */}
                 <TableCell component="th" scope="row">
                   {row.shopName}
                 </TableCell>
+                {/* If isShoppable is true show a chip to display that the store
+                is in live. If not display a chip to display that the store is
+                down */}
                 <TableCell align="right">
                   {row.isShoppable === true ? (
                     <Chip label="In Live" color="primary" />
@@ -116,6 +148,8 @@ const DashBoard: FC = () => {
                     <Chip label="Down" color="primary" variant="outlined" />
                   )}
                 </TableCell>
+                {/* Display the categories of the retailer by seperating it with a '|'
+                symbol */}
                 <TableCell align="right">{row.categories.join(' | ')}</TableCell>
               </TableRow>
             ))}

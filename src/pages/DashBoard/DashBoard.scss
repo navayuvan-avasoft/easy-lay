@@ -4,14 +4,18 @@
   justify-content: space-between;
 }
 .RightBtn {
-  margin-right: 10px !important;
+  margin-left: 10px !important;
+  padding: 4% !important;
 }
-.logoutbtn {
-  margin-left: auto;
+.RightBtns {
+  width: 37%;
 }
 .TableHeader {
   background-color: rgb(202, 202, 202);
 }
 .TableHeaderContent {
   text-align: center;
+}
+.dropDownWidth {
+  width: 38% !important;
 }
