@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { FC, useState } from 'react';
 import { Container } from '@mui/material';
 import Box from '@mui/material/Box';
@@ -16,10 +15,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
-// import HttpResult from '../../helpers/http/HttpResult';
 import OnlineRetailer from '../../models/stores/OnlineRetailer';
-// import HttpStatus from '../../models/utils/HttpResult';
-// import StoreService from '../../services/StoreService';
 import './DashBoard.scss';
 
 /* Setting Mock Data */
@@ -62,7 +58,6 @@ const DashBoard: FC = () => {
     const filteredRows = a.filter((row) =>
       row.shopName.toLowerCase().includes(event.target.value.toLowerCase()),
     );
-    console.log(filteredRows);
     setRows(filteredRows);
   };
 
@@ -76,7 +71,7 @@ const DashBoard: FC = () => {
         <div className="RightBtns">
           <FormControl className="dropDownWidth">
             <InputLabel id="demo-simple-select-label">Config</InputLabel>
-            <Select labelId="demo-simple-select-label" id="demo-simple-select" label="Age">
+            <Select labelId="demo-simple-select-label" id="demo-simple-select" label="Config">
               <MenuItem value={10}>Dev</MenuItem>
               <MenuItem value={20}>QA</MenuItem>
               <MenuItem value={30}>UAT</MenuItem>
