@@ -9,7 +9,7 @@ const InsertPage: FC = () => (
         Add New Store
       </Typography>
       <form>
-        <Grid container className="subdiv" rowSpacing={3} columnSpacing={2}>
+        <Grid container rowSpacing={3} columnSpacing={2}>
           <Grid container justifyContent="flex-end" alignItems="center" item sm={6}>
             <label htmlFor="image-file">Upload Retailer Logo</label>
           </Grid>
