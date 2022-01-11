@@ -11,9 +11,7 @@ const InsertPage: FC = () => (
       <form>
         <Grid container className="subdiv" rowSpacing={3} columnSpacing={2}>
           <Grid container justifyContent="flex-end" alignItems="center" item sm={6}>
-            <label htmlFor="image-file">
-              Upload Retailer Logo
-            </label>
+            <label htmlFor="image-file">Upload Retailer Logo</label>
           </Grid>
 
           <Grid item sm={6}>
