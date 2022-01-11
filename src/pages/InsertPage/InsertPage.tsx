@@ -150,18 +150,22 @@ const InsertPage: FC = () => {
       );
       const appendedImageURL = `/images/${ImageURL}`;
       InsertStoreData = {
-        shopName: form.elements.ShopName.value,
-        dbFriendlyShopName: form.elements.DBFriendlyName.value,
-        shopDBA: form.elements.ShopDBA.value,
-        shopLocationGUID: form.elements.Loc_guid.value,
-        shopWebURL: form.elements.WebUrl.value,
-        shopSovrnWebURL: form.elements.SovernUrl.value,
-        shopLogoURL: appendedImageURL,
-        isShoppable: true,
-        isPopular: false,
-        isNew: false,
-        isDelete: false,
-        merchantID: form.elements.Merchantid.value,
+        bulkStoreList: [
+          {
+            shopName: form.elements.ShopName.value,
+            dbFriendlyShopName: form.elements.DBFriendlyName.value,
+            shopDBA: form.elements.ShopDBA.value,
+            shopLocationGUID: form.elements.Loc_guid.value,
+            shopWebURL: form.elements.WebUrl.value,
+            shopSovrnWebURL: form.elements.SovernUrl.value,
+            shopLogoURL: appendedImageURL,
+            isShoppable: true,
+            isPopular: false,
+            isNew: false,
+            isDelete: false,
+            merchantID: form.elements.Merchantid.value,
+          },
+        ],
       };
     } catch (error) {
       console.log(error);
