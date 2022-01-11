@@ -9,6 +9,11 @@
   "ROUTES": {
     "ACCESS_TOKEN": "/api/auth/getToken",
     "GET_ALL_RETAILERS": "/api/store/getAllOnlineStores",
-    "POST_RETAILER_LOGO": "/api/store/UploadImage "
+    "POST_RETAILER_LOGO": "/api/store/UploadImage ",
+    "POST_INSERTSTORE": "/api/store/bulkOnlineStoreInsert",
+    "GET_OVERLAY_CONFIG": "/api/Overlay/getOverlayConfig",
+    "POST_OVERLAY_CONFIG": "/api/Overlay/editOverlayConfig",
+    "POST_JS_FILE": "/api/Overlay/UploadStoreJS",
+    "POST_RETAILER_CATEGORY": "/api/store/AddNewCategoryAssociation"
   }
 }

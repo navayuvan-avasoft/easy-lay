@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 /* eslint-disable no-console */
 import React, { ChangeEvent, FC, FormEvent } from 'react';
 import {
@@ -13,12 +14,17 @@ import {
 } from '@mui/material';
 import JSFileType from '../../models/stores/JSFileType';
 import InsertStoreModel from '../../models/stores/InsertStoreModel';
+import StoreService from '../../services/StoreService';
+import HttpResult from '../../helpers/http/HttpResult';
+import HttpStatus from '../../models/utils/HttpResult';
 import FetchConfigModel from '../../models/stores/FetchConfigModel';
+import CategoryAssociationModel from '../../models/stores/CategoryAssociationModel';
 import OverlayDBDataModel from '../../models/stores/OverlayDBDataModel';
 import './InsertPage.scss';
+import OverlayResultModel from '../../models/stores/OverlayResultModel';
+import InsertStoreResultModel from '../../models/stores/InsertStoreResultModel';
 
 const InsertPage: FC = () => {
-  const IsImageUploadSucess = false;
   let storelogo: File | null = null;
   let pdpPageJSFile: File | null = null;
   let cartPageJSFile: File | null = null;
@@ -27,8 +33,10 @@ const InsertPage: FC = () => {
   let InsertStoreData: InsertStoreModel;
   let FetchConfigurationData: FetchConfigModel;
   let OverlayConfigurationData: OverlayDBDataModel;
+  let SelectedCategoryData: CategoryAssociationModel;
   let JSFileName: string;
   let RecievedShopID: number;
+  let IsImageUploadSucess = false;
 
   const [categorySelected, setcategorySelected] = React.useState<string[]>([]);
 
@@ -56,9 +64,23 @@ const InsertPage: FC = () => {
   };
 
   const postOverlayConfigData = (ConfigBody: OverlayDBDataModel): void => {
-    console.log(ConfigBody);
-
     // Make an Api call in StoreService to update the OverlayConfig Data in DB
+    debugger;
+    if (ConfigBody != null) {
+      StoreService.postOverlayDBConfig(ConfigBody)
+        .then((response: HttpResult<OverlayResultModel>) => {
+          if (response.status === HttpStatus.Success) {
+            // Response is true
+            console.log('Store Config is updated in DB');
+          }
+        })
+        .catch((error) => {
+          // Used console log for demonstration purpose. Do not use console.log when you're
+          // developing the app.
+          // eslint-disable-next-line no-console
+          console.log((error as Error).message);
+        });
+    }
   };
 
   const PopulateOverlayConfigData = (
@@ -66,6 +88,7 @@ const InsertPage: FC = () => {
     Shopid: number,
   ): void => {
     try {
+      debugger;
       // Initial, PDP, Cart and Checkout JS Code URL to be appended
       JSFileName = form.elements.ShopName.value;
       const specialChars = '!@#$^&%*()+=-[]/{}|:<>?,.';
@@ -93,7 +116,7 @@ const InsertPage: FC = () => {
         dbFriendlyShopName: form.elements.DBFriendlyName.value,
         shopWebURL: form.elements.WebUrl.value,
         shopSovrnWebURL: form.elements.SovernUrl.value,
-        finalJSCodeURL: null,
+        finalJSCodeURL: 'null',
         initialJSCodeURL: appendInitialJSUrl,
         pdpPageCommonURL: form.elements.pdpcommonurl.value,
         pdpPageButtonCode: form.elements.pdpbuttoncode.value,
@@ -104,13 +127,13 @@ const InsertPage: FC = () => {
         checkoutPageCommonURL: form.elements.checkoutcommonurl.value,
         checkoutPageButtonCode: form.elements.checkoutbuttoncode.value,
         checkoutPageJSCodeURL: appendCheckoutJSUrl,
-        gridPageCommonURL: null,
-        gridPageButtonCode: null,
-        gridPageJSCodeURL: null,
-        paymentCardNumber: null,
-        paymentCardExpiryMonth: null,
-        paymentCardExpiryYear: null,
-        paymentCardCVV: null,
+        gridPageCommonURL: 'null',
+        gridPageButtonCode: 'null',
+        gridPageJSCodeURL: 'null',
+        paymentCardNumber: 'null',
+        paymentCardExpiryMonth: 'null',
+        paymentCardExpiryYear: 'null',
+        paymentCardCVV: 'null',
       };
 
       postOverlayConfigData(OverlayConfigurationData);
@@ -121,6 +144,7 @@ const InsertPage: FC = () => {
 
   const PopulateInsertStoreVariable = (form: EventTarget & InsertFormElement): void => {
     try {
+      debugger;
       const ImageURL: string = form.elements.image_file.value.substring(
         form.elements.image_file.value.lastIndexOf('\\') + 1,
       );
@@ -132,12 +156,12 @@ const InsertPage: FC = () => {
         shopLocationGUID: form.elements.Loc_guid.value,
         shopWebURL: form.elements.WebUrl.value,
         shopSovrnWebURL: form.elements.SovernUrl.value,
-        merchantID: form.elements.Merchantid.value,
         shopLogoURL: appendedImageURL,
-        isDelete: false,
-        isNew: false,
-        isPopular: false,
         isShoppable: true,
+        isPopular: false,
+        isNew: false,
+        isDelete: false,
+        merchantID: form.elements.Merchantid.value,
       };
     } catch (error) {
       console.log(error);
@@ -145,26 +169,108 @@ const InsertPage: FC = () => {
   };
 
   const OnlineBulkInsert = (StoreData: InsertStoreModel): void => {
-    console.log(StoreData);
-
+    debugger;
     // Call the postOnlineBulkInsert in StoreService to make the API Call
+    if (StoreData != null) {
+      StoreService.postOnlineBulkInsert(StoreData)
+        .then((response: HttpResult<InsertStoreResultModel>) => {
+          if (response.status === HttpStatus.Success) {
+            // Response is true
+            console.log('Store is inserted in DB');
+          }
+        })
+        .catch((error) => {
+          // Used console log for demonstration purpose. Do not use console.log when you're
+          // developing the app.
+          // eslint-disable-next-line no-console
+          console.log((error as Error).message);
+        });
+    }
   };
 
   const fetchOverlayConfig = (form: EventTarget & InsertFormElement): void => {
+    debugger;
     FetchConfigurationData = {
       ShopID: -1,
       ShopName: form.elements.ShopName.value,
       DBFriendlyShopName: form.elements.DBFriendlyName.value,
     };
-    console.log(FetchConfigurationData);
-
-    // Assign the fetched ShopID to the RecievedShopID
-    RecievedShopID = 90;
+    StoreService.getOverlayConfig(FetchConfigurationData)
+      .then((response: HttpResult<OverlayDBDataModel>) => {
+        if (response.status === HttpStatus.Success) {
+          // Response is true, then get the shopID
+          RecievedShopID = Number(response.data?.shopID);
+          console.log('Configuration is fetched');
+        }
+      })
+      .catch((error) => {
+        // Used console log for demonstration purpose. Do not use console.log when you're
+        // developing the app.
+        // eslint-disable-next-line no-console
+        console.log((error as Error).message);
+      });
   };
 
   const UploadJSFiles = (): void => {
+    debugger;
+    const formData = new FormData();
     // Make Api call in Store service to upload all the JS file
-    // with
+    if (pdpPageJSFile != null) {
+      formData.append('PDPPageFile', pdpPageJSFile as Blob);
+      StoreService.uploadJSFiles(formData, JSFileName)
+        .then((response: HttpResult<boolean>) => {
+          if (response.status === HttpStatus.Success) {
+            console.log('PDP File is uploaded');
+          }
+        })
+        .catch((error) => {
+          // Used console log for demonstration purpose. Do not use console.log when you're
+          // eslint-disable-next-line no-console
+          console.log((error as Error).message);
+        });
+    }
+    if (cartPageJSFile != null) {
+      formData.append('CartPageFile', cartPageJSFile as Blob);
+      StoreService.uploadJSFiles(formData, JSFileName)
+        .then((response: HttpResult<boolean>) => {
+          if (response.status === HttpStatus.Success) {
+            console.log('Cart File is uploaded');
+          }
+        })
+        .catch((error) => {
+          // Used console log for demonstration purpose. Do not use console.log when you're
+          // eslint-disable-next-line no-console
+          console.log((error as Error).message);
+        });
+    }
+    if (checkoutPageJSFile != null) {
+      formData.append('PDPPageFile', checkoutPageJSFile as Blob);
+      StoreService.uploadJSFiles(formData, JSFileName)
+        .then((response: HttpResult<boolean>) => {
+          if (response.status === HttpStatus.Success) {
+            console.log('Checkout File is uploaded');
+          }
+        })
+        .catch((error) => {
+          // Used console log for demonstration purpose. Do not use console.log when you're
+          // eslint-disable-next-line no-console
+          console.log((error as Error).message);
+        });
+    }
+    if (initialJSFile != null) {
+      formData.append('InitialJSFile', initialJSFile as Blob);
+      StoreService.uploadJSFiles(formData, JSFileName)
+        .then((response: HttpResult<boolean>) => {
+          if (response.status === HttpStatus.Success) {
+            console.log('InitialJS File is uploaded');
+          }
+        })
+        .catch((error) => {
+          // Used console log for demonstration purpose. Do not use console.log when you're
+          // eslint-disable-next-line no-console
+          console.log((error as Error).message);
+        });
+    }
   };
 
   const Categorynames = [
@@ -189,20 +295,38 @@ const InsertPage: FC = () => {
     );
   };
 
+  const InsertStoreLogo = (imageLogo: FormData): void => {
+    debugger;
+    StoreService.postRetailerLogo(imageLogo)
+      .then((response: HttpResult<boolean>) => {
+        if (response.status === HttpStatus.Success) {
+          // ImageUpload is Sucess
+          IsImageUploadSucess = true;
+          console.log('Image File is uploaded');
+        }
+        IsImageUploadSucess = false;
+      })
+      .catch((error) => {
+        // Used console log for demonstration purpose. Do not use console.log when you're
+        // developing the app.
+        // eslint-disable-next-line no-console
+        console.log((error as Error).message);
+      });
+  };
+
   const UploadStoreLogo = (form: EventTarget & InsertFormElement): void => {
     if (form.elements.image_file.value === null || form.elements.image_file.value === '') {
       // Show Error Message on ShopLogo Upload Field
       // Set  setshopLogoImageFile to null
     }
     const formData = new FormData();
-    // const imageFile : string = form.elements.image_file.innerText;
     formData.append('RetailerLogo', storelogo as Blob);
     const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
     if (!allowedExtensions.exec(form.elements.image_file.value)) {
       // Show error Message that the uploaded file is not of correct filr type
     }
     // API call is originated for StoreLogo Upload
-    // InsertStoreLogo(formData);
+    InsertStoreLogo(formData);
 
     if (!IsImageUploadSucess) {
       // Error while making Image upload API
@@ -210,9 +334,30 @@ const InsertPage: FC = () => {
   };
 
   const CategoryAssociation = (form: EventTarget & InsertFormElement): void => {
+    debugger;
     // Using for loop add each category
     const selectedvalue = form.elements.Category.value.split(',');
-    console.log(selectedvalue);
+    for (let i = 0; i < selectedvalue.length; i++) {
+      SelectedCategoryData = {
+        ShopId: RecievedShopID,
+        ShopName: form.elements.ShopName.value,
+        ShopDBA: form.elements.ShopDBA.value,
+        CategoryName: selectedvalue[i],
+      };
+      StoreService.postRetailerCategory(SelectedCategoryData)
+        .then((response: HttpResult<OverlayResultModel>) => {
+          if (response.status === HttpStatus.Success) {
+            // Response is true, then Category is associated
+            console.log('Category is associated');
+          }
+        })
+        .catch((error) => {
+          // Used console log for demonstration purpose. Do not use console.log when you're
+          // developing the app.
+          // eslint-disable-next-line no-console
+          console.log((error as Error).message);
+        });
+    }
   };
 
   interface FormElements extends HTMLFormControlsCollection {
@@ -238,6 +383,7 @@ const InsertPage: FC = () => {
 
   const insertStoreButtonClicked = (event: FormEvent<InsertFormElement>): void => {
     try {
+      debugger;
       event.preventDefault();
       const form = event.currentTarget;
 
