@@ -1,0 +1,24 @@
+.parentheader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.RightBtn {
+  margin-left: 10px !important;
+}
+.TableHeader {
+  background-color: rgb(202, 202, 202);
+}
+.TableHeaderContent {
+  text-align: center;
+}
+#demo-simple-select {
+  padding-top: 7px !important;
+  padding-bottom: 7px !important;
+}
+.dropDownWidth {
+  width: 100px;
+}
+#demo-simple-select-label {
+  top: -8px !important;
+}

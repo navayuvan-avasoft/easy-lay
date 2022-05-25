@@ -10,20 +10,29 @@ import AccessToken, { AccessTokenResponse } from '../../models/utils/AccessToken
 class HttpClient<R, B> {
   client: AxiosInstance;
 
-  constructor(token: string) {
+  constructor(token: string, config?: Record<string, unknown>) {
+    let header = {
+      Authorization: `Bearer ${token}`,
+      API_SERVICE_KEY: String(process.env.REACT_APP_DEV_API_SERVICE_KEY),
+      JWT_TOKEN_KEY: String(process.env.REACT_APP_DEV_JWT_TOKEN_KEY),
+    };
+
+    if (config !== null) {
+      header = {
+        ...header,
+        ...config,
+      };
+    }
+
     this.client = axios.create({
       baseURL: HttpClient.getBaseURL(),
-      headers: {
-        Authorization: `Bearer ${token}`,
-        API_SERVICE_KEY: String(process.env.REACT_APP_DEV_API_SERVICE_KEY),
-        JWT_TOKEN_KEY: String(process.env.REACT_APP_DEV_JWT_TOKEN_KEY),
-      },
+      headers: header,
     });
   }
 
-  public static async Create<R, B>(): Promise<HttpClient<R, B>> {
+  public static async Create<R, B>(config?: Record<string, unknown>): Promise<HttpClient<R, B>> {
     const token = await HttpClient.getAccessToken();
-    return new HttpClient<R, B>(token);
+    return new HttpClient<R, B>(token, config);
   }
 
   get = async (URL: string): Promise<HttpResult<R>> => {
